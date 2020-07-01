@@ -1,0 +1,19 @@
+
+docker run ubuntu --> exists s it doesnot get terminal
+
+FROM ubuntu
+CMD ["sleep", "5"]
+
+sleeps for 5 sec 
+
+FROM ubuntu 
+ENTRYPOINT ["sleep"]
+CMD ["5"]
+
+in pods >>
+
+ENTRYPOINT --> command  
+
+CMD --> args 
+
+

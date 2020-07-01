@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-app 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app 
+  template:
+    metadata:
+      name: myapp-deploy 
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: nginx 
+        image: nginx 
+  strategy:
+    rollingUpdate:
+      maxsurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+    
+        

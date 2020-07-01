@@ -1,0 +1,63 @@
+# Pod to use mount on the device
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+spec:
+  containers:
+  - name: event-simulator-container 
+    image: kodekloud/event-simulator
+    volumeMounts:
+    - mountPath: /log
+      name: data-dir
+  volumes:
+  - name: data-dir 
+    hostPath:
+      path: /var/log/webapp
+      type: Directory 
+
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-log
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 100Mi
+  hostPath:
+    path: /pv/log
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: claim-log-1
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Mi
+
+
+# pod to use PVC
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+spec:
+  containers:
+  - name: event-simulator-container 
+    image: kodekloud/event-simulator
+    volumeMounts:
+    - mountPath: /log 
+      name: my-volpd
+  volumes:
+    - name: my-volpd
+      persistentVolumeClaim:
+        claimName: claim-log-1
+  

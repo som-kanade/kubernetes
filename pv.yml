@@ -1,0 +1,30 @@
+# PVs
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume1
+spec:
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 5Gi 
+  awsElasticBlockStore:
+    volumeId: <volumeId of EBS Volumes>
+    fsType: ext4
+
+---
+
+# PV Claims 
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-claim 
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi

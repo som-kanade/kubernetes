@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: daemonSet
+metadata:
+  name: my-daemon
+  labels:
+    app: app1
+    tier : FE 
+spec:
+  template:
+    metadata:
+      name: my-daemon
+      labels:
+        app: app1
+        tier : FE 
+    spec:
+      containers:
+      - name: nginx
+        image: nginx 
+  selector:
+    matchLabels:
+      app: app1

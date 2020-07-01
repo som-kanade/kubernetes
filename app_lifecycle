@@ -1,0 +1,16 @@
+
+
+# app lifecycle 
+
+#deployment stratagies >>
+
+#recreate -- all at once 
+#rolling update -- default policy -- one at a time
+
+
+kubectl rollout history <deployments>
+kubectl rollout status <deployments>
+kubectl rollout undo <deployments>
+
+
+

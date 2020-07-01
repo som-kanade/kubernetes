@@ -1,0 +1,24 @@
+# 0.1 cpu = 100m 
+# default cpu = 1vcpu 
+# default memory = 512 MB
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod 
+  labels:
+    app: app1
+    tier: FE 
+spec:
+  containers:
+  - name: nginx 
+    image: nginx 
+  resources:
+    requests:
+      cpu: 1
+      memory: "1 Gi"
+    limits:
+      cpu: 2
+      memory: "2 Gi"
+
+  

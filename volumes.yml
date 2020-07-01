@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-volume
+spec:
+  containers:
+  - name: nginx
+    image: nginx 
+  volumeMounts:
+  - mountPath: /opt
+    name: data-volume
+
+  volumes:
+  - name: data-volume
+    hostPath:
+      path: /data <vol-id of EBS >
+      type: Directory
+
+

@@ -1,0 +1,37 @@
+# create configmap (kubectl create configmap <my-config>)
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  APP_COLOR: blue
+  APP_ENV: stage 
+
+
+# inject this into pod now
+
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: myapp
+  labels:
+    app: app1 
+    tier: FE 
+  spec:
+    containers:
+    - name: nginx 
+      image: nginx 
+      envFrom:
+        - configMapRef:
+            name: my-configmap
+
+
+
+# kubectl create configmap 
+#     <configmap-name> --from-literal=<key>=<value>
+
+# kubectl create configmap 
+    # <myconfigmap> --from-literal=app=app1 
+
+  

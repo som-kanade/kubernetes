@@ -1,0 +1,11 @@
+certificates 
+
+1. create key pair 
+  openssl genrsa -out admin.key 2048 
+
+2.create CSR req
+  openssl req -new -key admin.key -subj "/CN=kube-admin" -out admin.csr 
+
+3. sign the CSR 
+   openssl x509 -req -in admin.csr -CA ca.crt -CAkey ca.crt -out admin.crt 
+

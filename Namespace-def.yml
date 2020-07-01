@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev 
+
+
+# specify NS while creating pod by adding it in metadata field 
+
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: app
+  Namespace: dev
+
+

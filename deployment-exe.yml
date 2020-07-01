@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-frontend
+  labels:
+    app: app1
+spec:
+  template:
+    metadata:
+      name: mypod
+      labels:
+        app: app1
+    spec:
+      containers:
+      - name: httpd-frontend
+        image: httpd:2.4-alpine
+  selector:
+    matchLabels:
+      app: app1

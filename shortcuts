@@ -1,0 +1,6 @@
+# edit a pod 
+
+kubectl edit pod <my-pod>
+
+kubectl get pod <my-pod> -o yaml > <my-new-pod.yml>
+

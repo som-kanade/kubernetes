@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod 
+  labels:
+    app: app1
+    tier: FE 
+spec:
+  containers:
+  - name: nginx 
+    image: nginx 
+  nodeSelector:
+    size: Large 
+
+
+
+
+# label nodes first 
+# kubectl label nodes node1 size:Large

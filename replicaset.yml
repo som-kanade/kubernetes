@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myreplicaset-def
+  labels:
+    app: myrs-app
+    tier: FE
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        tier: FE
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx 
+  selector:
+    matchLabels:
+      app: myrs-app
+
+
+# kubectl scale --replicas=6 replicaset/myreplicaset-def
+
+# kubectl scale --replicas=6 replicaset myreplicaset-def
+

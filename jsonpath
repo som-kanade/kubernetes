@@ -1,0 +1,13 @@
+
+$.[0] >> first element
+$.[0].name >> name of first element 
+
+kubectl get pods -o json >> get response op 
+
+get jsonpath query 
+
+.items[0].spec.containers[0].image  >> get image for first containers 
+
+kubectl get pods -o jsonpath= '{.items[0].spec.containers[0].image} {"\n"} {.items[0].spec.containers[0].image}'
+
+

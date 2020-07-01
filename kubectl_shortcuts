@@ -1,0 +1,48 @@
+kubectl get pod nginx-pod -o yaml >> get yaml file of pod 
+kubectl get pod nginx-pod -o yaml > nginxpod.yml 
+
+
+run a pod >>
+
+kubectl run nginx-pod --generator=run-pod/v1 --image=nginx-alpine
+
+kubectl run deploy --generator=deployment/apps.v1 --image=redis:alpine 
+
+kubectl expose deployment/messaging --type="ClusterIP" --port=6379 --selector tier=msg --name=messaging-service
+
+kubectl run --image=busybox static-busybox -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
+
+
+kubectl expose deployment hr-web-app --type=NodePort --port=8080 --name=hr-web-app-service -o yaml > hr-web-app-service.yaml
+
+ETCDCTL_API=3 etcdctl --endpoints https://[127.0.0.1]:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/healthcheck-client.crt --key=/etc/kubernetes/pki/etcd/healthcheck-client.key snapshot save /tmp/etcd-backup.db
+
+
+
+kubectl run static-busybox --image=busybox -o yaml --command --sleep 1000  > /etc/kubernetes/manifests/busybox.yml
+
+kubectl run --restart=Never --image=busybox static-busybox --dry-run -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
+
+kubectl run --image=busybox static-busybox -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
+
+
+
+
+
+
+prep >>
+
+Core Concepts 19% >> done
+Scheduling 5% >> done 
+Logging / Monitoring 5% >> done 
+Application Lifecycle Management 8% >> done
+Cluster Maintenance 11% >> done (etcd backup and restore pending )
+Storage 7% >> done 
+
+
+Networking 11% 
+Installation, Configuration & Validation 12%
+Troubleshooting 10%
+Security 12%
+
+

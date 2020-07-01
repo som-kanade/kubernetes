@@ -1,0 +1,9 @@
+# monitoring -- heapster,metrics server, prometheus 
+run agent on nodes which will collect metrics at node/pod level
+
+
+kubectl logs -f <podname>
+
+for container logs 
+
+kubectl logs -f <podname> <container-name>
