@@ -1,0 +1,33 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx3
+  name: nginx3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx3
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx3
+    spec:
+      serviceAccountName: banking     
+      containers:
+      - image: 813361731051.dkr.ecr.ap-south-1.amazonaws.com/dockerhub:kubectl
+        name: nginx3
+        command: ["/bin/sh"]
+        args:
+          - "sleep"
+          - "3000"
+        securityContext:
+          privileged: false
+          runAsUser: 1001
+        resources:
+          limits:
+            cpu: 200m
+            memory: 200Mi
